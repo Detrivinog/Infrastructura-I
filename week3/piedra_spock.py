@@ -41,8 +41,6 @@ def new_game():
     else:
         return again
 
-
-
 def run():
     with open('piedra-spock.json', 'r') as file:
         data = json.load(file)
@@ -70,7 +68,6 @@ def run():
         elif again == "n" or again == "no":
             print("Fue un placer, vuelve pronto")
             break
-
 
 if __name__ == '__main__':
     run()

@@ -3,35 +3,30 @@
         "name": "Piedra",
         "id": 1,
         "win": [3,4],
-        "lose": [2,5],
         "actions": ["aplasta", "aplasta"]
     },
     {
         "name": "Papel",
         "id": 2,
         "win": [1,5],
-        "lose": [3,4],
         "actions": ["envuelve", "desautoriza"]            
     },
     {
         "name": "Tijera",
         "id": 3,
         "win": [2,4],
-        "lose": [1,5],
         "actions": ["corta", "decapita"]                
     },
     {
         "name": "Lagarto",
         "id": 4,
         "win": [2,5],
-        "lose": [1,3],
         "actions": ["devora", "envenena"]                
     },
     {
         "name": "Spock",
         "id": 5,
         "win": [1,3],
-        "lose": [2,4],
         "actions": ["vaporiza", "rompe"]            
         }
 ]
