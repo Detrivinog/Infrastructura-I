@@ -1,0 +1,1 @@
+curl https://raw.githubusercontent.com/olea/lemarios/master/nombres-propios-es.txt | grep "^L" | shuf -n 5 >> nombres |  curl https://raw.githubusercontent.com/olea/lemarios/master/nombres-propios-es.txt | grep "^C" | shuf -n 5 >> nombres
