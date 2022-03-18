@@ -10,6 +10,7 @@ while True:
     print("4)Salir del Programa")
     opcion = int(input("Que eliges: "))
     
+    # user_validation()
     if opcion == 1:
         eligeUsuario = "piedra"
     elif opcion == 2:
@@ -22,8 +23,9 @@ while True:
     else:
         print ("Valor Invalido")
         continue
-        
     print("Tu eliges: ", eligeUsuario)   
+    
+    # print_pc_option()
     if aleatorio == 0:
         eligePc = "piedra"
     elif aleatorio == 1:
@@ -33,6 +35,7 @@ while True:
     print("PC eligio: ", eligePc)
     print("...")
     
+    # rules_game()
     if eligePc == "piedra" and eligeUsuario == "papel":
         print("Ganaste, papel envuelve piedra")
     elif eligePc == "papel" and eligeUsuario == "tijera":
@@ -48,6 +51,8 @@ while True:
         print("Perdiste, piedra pisa tijera")
     elif eligePc == eligeUsuario:
         print("Empate")
+
+    # new_game()
     again = input("Jugamos de nuevo? Si/No: ")
     if 'si' in again:
         continue
