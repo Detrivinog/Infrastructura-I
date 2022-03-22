@@ -17,7 +17,6 @@ def print_score(user_score, pc_score):
     print("---" * 10)
     print(f'Puntajes: \nUsuario: {user_score} puntos \nPC: {pc_score} puntos')
     print(f'Porcentaje de victorias: {percentage(user_score, pc_score):.1f}%')
-    print("---" * 10)
 
 def action_message(win, lose, data):
     winner = search_by_id(win, data)
@@ -42,7 +41,7 @@ def new_game():
         if again not in ['s', 'n', 'si', 'no']:
             raise TypeError
     except TypeError:
-            print("Valor de entrada invalido, los valores admitidos son (S) o (N)")
+            print("Valor de entrada invalido, los valores admitidos son (S) o (N)\nSi desea salir del programa ingrese el número 7")
     else:
         return again
 
@@ -52,12 +51,13 @@ def run():
 
     user_points = 0
     pc_points = 0
-    while True: 
+    while True:
+        print("---" * 10) 
         for option in data:
             print(option['id'], option['name'])
         print("6 Mostrar puntajes")
         print("7 Salir del Programa")
-        
+        print("---" * 10)
         try:
             user_input = input("Que eliges: ")
             if not user_input.isnumeric():
@@ -78,6 +78,8 @@ def run():
             print_score(user_points, pc_points)
             continue
         elif user_choice == 7:
+            print_score(user_points, pc_points)
+            print("---" * 10)
             print("Nos vemos!")
             break
         elif user_choice in range(1,8):
@@ -88,6 +90,7 @@ def run():
         print("---" * 10)
 
         user_points, pc_points = rules_game(user_choice, pc_choice, data, user_points, pc_points)
+        print("---" * 10)
         again = new_game()
         if again == "s" or again == "si":
             continue
