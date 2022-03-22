@@ -7,16 +7,6 @@ def search_by_id(id, data):
         if option['id'] == id:
             return option
 
-def user_validation():
-    try:
-        user_choice = int(input("Que eliges: "))
-        if user_choice not in range(1,8):
-            raise ValueError
-    except ValueError:
-        print("Solo son válidos números del 1-6")
-    else:
-        return user_choice
-
 def percentage(user_score, pc_score):
     if user_score == 0:
         return user_score
@@ -68,14 +58,29 @@ def run():
         print("6 Mostrar puntajes")
         print("7 Salir del Programa")
         
-        user_choice = user_validation()
+        try:
+            user_input = input("Que eliges: ")
+            if not user_input.isnumeric():
+                raise TypeError
+            elif user_input.isnumeric():
+                user_input = int(user_input)
+                if user_input not in range(1,8):
+                    raise ValueError("Solo son válidos números del 1-7")
+                user_choice = user_input
+        except ValueError as ve:
+            print(ve)
+            continue
+        except TypeError:
+            print("Solo son válidos números")
+            continue
+
         if user_choice == 6:
             print_score(user_points, pc_points)
             continue
         elif user_choice == 7:
             print("Nos vemos!")
             break
-        else:
+        elif user_choice in range(1,8):
             print(f"Tu eliges: {search_by_id(user_choice, data)['name']}")
 
         pc_choice = random.randrange(1, 6)
