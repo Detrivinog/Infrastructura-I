@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: my-secret-pw
+      MYSQL_DATABASE: wordpressdb
+    networks:
+      - internal
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "8081:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: my-secret-pw
+      WORDPRESS_DB_NAME: wordpressdb
+      WORDPRESS_TABLE_PREFIX: hj
+    networks:
+      - internal
+      - public
+
+networks:
+  internal:
+    internal: true
+  public:
+
+volumes:
+  db_data: {}
+  wordpress_data: {}
